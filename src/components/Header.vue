@@ -1,12 +1,18 @@
 <template>
   <header>
     <nav>
+      <div class="logo">
+        <img src="@/assets/CRO_hunt_logo_.png" alt="CRO Hunt Logo">
+      </div>
       <ul>
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/about">About</router-link></li>
-        <li><router-link to="/locations">Hunting Locations</router-link></li>
-        <li><router-link to="/services">Tourist Services</router-link></li>
         <li><router-link to="/gallery">Gallery</router-link></li>
+        <li><router-link to="/what-we-offer">What We Offer</router-link></li>
+        <li><router-link to="/offer/bear">Bear Hunting</router-link></li>
+        <li><router-link to="/offer/red_stag">Red Stag Hunting</router-link></li>
+        <li><router-link to="/offer/chamois">Chamois Hunting</router-link></li>
+        <li><router-link to="/offer/roe_deer">Roe Deer Hunting</router-link></li>
+        <li><router-link to="/offer/wild_boar">Wild Boar Hunting</router-link></li>
         <li><router-link to="/contact">Contact</router-link></li>
       </ul>
     </nav>
@@ -21,19 +27,23 @@ export default {
 
 <style scoped>
 header {
-  background-color: #505b3e; /* Maslinasto zelena pozadina */
-  color: white; /* Bijela boja teksta */
-  padding: 10px 20px; /* Unutarnji razmak */
-  border-bottom: 2px solid #ccc; /* Donji okvir */
-  position: fixed; /* Fiksni položaj na vrhu */
-  width: 100%;
+  background-color: #505b3e; /* Maslinasto zelena boja */
+  padding: 10px 20px;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px; /* Visina loga, možete prilagoditi prema potrebi */
 }
 
 ul {
@@ -44,16 +54,17 @@ ul {
 }
 
 li {
-  margin-left: 20px;
+  margin: 0 15px;
 }
 
 a {
   text-decoration: none;
-  color: white; /* Bijela boja teksta za linkove */
-  transition: color 0.3s; /* Glatka tranzicija za hover efekt */
+  color: white; /* Bijela boja za tekst */
+  font-size: 1.2em;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #6f7b4f; /* Svjetlija maslinasto zelena boja prilikom hovera */
+  color: #ffffffb3; /* Svjetlija maslinasto zelena boja pri prelasku miša */
 }
 </style>

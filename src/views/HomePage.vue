@@ -14,37 +14,45 @@
         <p>On behalf of our team, we wish you all a successful hunt – DOBRA KOB!</p>
       </div>
     </div>
-    
+    <!-- Nova slika ispod opisa -->
+    <div class="intro-image">
+      <img src="@/assets/images/Tumac_ljepsa.jpeg" alt="Intro Image" class="intro-img">
+    </div>
     <!-- Ponuda lova -->
     <div class="section">
-      <h2>What We Offer</h2>
+      <h2 class="section-title">What We Offer</h2>
       <div class="offerings">
         <div class="offering" @click="goToOffer('bear')">
           <img src="@/assets/images/Medvjed.jpeg" alt="Bear Hunting">
-          <div class="offering-text">Bear Hunting</div>
+          <div class="offering-overlay">
+            <div class="offering-text">Bear Hunting</div>
+          </div>
         </div>
         <div class="offering" @click="goToOffer('red_stag')">
           <img src="@/assets/images/Jelen.jpeg" alt="Red Stag Hunting">
-          <div class="offering-text">Red Stag Hunting</div>
+          <div class="offering-overlay">
+            <div class="offering-text">Red Stag Hunting</div>
+          </div>
         </div>
         <div class="offering" @click="goToOffer('chamois')">
           <img src="@/assets/images/Divokoza.jpg" alt="Chamois Hunting">
-          <div class="offering-text">Chamois Hunting</div>
+          <div class="offering-overlay">
+            <div class="offering-text">Chamois Hunting</div>
+          </div>
         </div>
         <div class="offering" @click="goToOffer('roe_deer')">
           <img src="@/assets/images/Srnjak.jpg" alt="Roe Deer Hunting">
-          <div class="offering-text">Roe Deer Hunting</div>
+          <div class="offering-overlay">
+            <div class="offering-text">Roe Deer Hunting</div>
+          </div>
         </div>
-        <div class="offering" @click="goToOffer('wild_boar')">
+        <div class="offering last-offering" @click="goToOffer('wild_boar')">
           <img src="@/assets/images/Prasci.jpeg" alt="Wild Boar Hunting">
-          <div class="offering-text">Wild Boar Hunting</div>
+          <div class="offering-overlay">
+            <div class="offering-text">Wild Boar Hunting</div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="section">
-      <h2>Tourist Services</h2>
-      <p>Our tourist services include guided hunting tours, accommodation, and transportation. Enjoy a seamless and enjoyable hunting trip with our professional services.</p>
     </div>
   </div>
 </template>
@@ -61,109 +69,177 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 .home {
-  padding-top: 60px; /* Osigurava da sadržaj ne prelazi ispod fiksnog headera */
+  padding-top: 0; /* Uklanjanje paddinga na vrhu */
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  margin: 0; /* Uklonite marginu */
+  padding: 0; /* Uklonite padding */
 }
 
 .banner-container {
-  width: 100%;
-  height: 773.39px; /* Postavljanje visine slike */
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 0; /* Uklonite marginu */
+  padding: 0; /* Uklonite padding */
+  flex-wrap: wrap;
+  width: 100%; /* Osigurava da kontejner zauzima punu širinu */
 }
 
 .banner {
-  width: 100%;
-  height: 100%; /* Postavljanje visine na 100% */
-  object-fit: cover; /* Prilagođava sliku da pokrije cijeli prostor */
+  width: 100%; /* Povećava širinu slike na 100% */
+  height: 773.39px; /* Postavljanje fiksne visine slike */
+  object-fit: cover;
 }
 
 .intro-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 40px 20px;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #505b3e; /* Maslinasto zelena boja */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .intro-text {
   flex: 1;
+  font-size: 2.5em;
+  color: #ffffff; /* Bijela boja za tekst */
 }
 
 .intro-description {
   flex: 2;
-}
-
-.intro-text h2 {
-  font-size: 3em;
-  color: #505b3e;
-  margin: 0;
-}
-
-.intro-description p {
+  margin-left: 20px;
   font-size: 1.2em;
-  color: #666;
+  color: #ffffff; /* Bijela boja za tekst */
+}
+
+/* Stilizacija nove slike */
+.intro-image {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.intro-img {
+  width: 70%; /* Širina slike koja nije preko cijele stranice */
+  height: 900px; /* Visina slike */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .section {
   margin: 20px 0;
   padding: 20px;
-  background-color: #f0f0f0;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  color: #333;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background-color: #505b3e; /* Maslinasto zelena boja */
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
 .offerings {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px; /* Smanjen razmak između slika */
   justify-content: center;
+  max-width: 1000px; /* Povećanje maksimalne širine */
+  margin: 0 auto;
 }
 
 .offering {
-  flex: 1 1 calc(33.333% - 20px);
-  text-align: center;
-  cursor: pointer;
   position: relative;
-  border-radius: 8px;
+  width: 100%; /* Manja širina slike */
+  height: 300px; /* Manja visina slike */
   overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Dodavanje sjene */
 }
 
 .offering img {
   width: 100%;
-  height: 340px; /* Postavljanje visine slika */
+  height: 100%;
   object-fit: cover;
 }
 
-.offering-text {
+.offering:hover {
+  transform: scale(1.05);
+}
+
+.offering-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Tamnija pozadina */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.offering:hover .offering-overlay {
+  opacity: 1;
+}
+
+.offering-text {
+  color: #ffffff;
   font-size: 1.2em;
+  text-align: center;
+  padding: 10px;
+}
+
+.last-offering {
+  grid-column: span 2; /* Zadnja opcija zauzima dvije kolone */
+  justify-self: center; /* Centriranje zadnje opcije */
 }
 
 @media (max-width: 768px) {
-  .intro-section {
-    flex-direction: column;
+  .banner {
+    width: 100%;
+    margin: 0;
   }
 
-  .intro-description {
+  .intro-text {
+    width: 100%;
     margin-top: 20px;
   }
 
-  .offerings {
+  .banner-container {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
-  .offering {
-    flex: 1 1 100%;
+  .offerings {
+    grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 480px) {
-  .offering {
-    flex: 1 1 100%;
+  .last-offering {
+    grid-column: span 1;
   }
 }
 </style>
